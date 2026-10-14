@@ -1,0 +1,366 @@
+.role-status-app .sim-nav {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.role-status-app .sim-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.role-status-app .sim-nav a:hover,
+.role-status-app .sim-nav a.active {
+    color: var(--purple-bright);
+}
+
+.role-status-app .nav-sep {
+    margin: 0 0.32rem;
+    color: var(--text-muted);
+}
+
+.role-status-app .config-panel input[type="search"] {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+}
+
+.role-status-app .config-panel input[type="search"]:focus {
+    outline: 2px solid var(--border-accent);
+    outline-offset: 1px;
+}
+
+.role-status-app .config-panel input[type="search"]::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+
+.role-status-empty {
+    margin: 1.5rem 0;
+    padding: 2rem 1.25rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-card);
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.role-status-panel,
+.role-status-groups,
+.role-status-group {
+    display: grid;
+    gap: 1rem;
+}
+
+.role-status-panel {
+    margin-top: 1rem;
+}
+
+.role-status-overview {
+    position: relative;
+    overflow: hidden;
+}
+
+.role-status-overview::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--purple-bright), transparent 82%);
+    opacity: 0.8;
+}
+
+.role-status-header > div {
+    min-width: 0;
+}
+
+.role-status-header h2 {
+    font-family: var(--font-serif);
+    letter-spacing: 0.04em;
+}
+
+.role-status-kicker {
+    display: block;
+    margin-bottom: 0.15rem;
+    color: var(--purple-bright);
+    font-family: var(--font-sans);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+}
+
+.role-status-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.55rem;
+}
+
+.role-status-summary > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-primary);
+}
+
+.role-status-summary span,
+.role-status-group-head span,
+.role-status-scope,
+.role-status-progress-row span,
+.role-status-metric span,
+.role-status-unknown {
+    color: var(--text-muted);
+}
+
+.role-status-summary span {
+    font-size: 0.72rem;
+}
+
+.role-status-summary strong {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.role-status-group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.role-status-group-head h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+}
+
+.role-status-group-head span {
+    font-size: 0.7rem;
+    text-align: right;
+}
+
+.role-status-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+.role-status-card {
+    min-width: 0;
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--bg-secondary) 44%, transparent), var(--bg-primary));
+}
+
+.role-status-card.is-full {
+    border-color: color-mix(in srgb, #4f9f77 58%, var(--border-color));
+}
+
+.role-status-card.is-progress,
+.role-status-card.is-active {
+    border-color: color-mix(in srgb, var(--purple-bright) 56%, var(--border-color));
+}
+
+.role-status-card.is-unknown {
+    border-style: dashed;
+}
+
+.role-status-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.role-status-card h4 {
+    display: inline;
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.88rem;
+}
+
+.role-status-scope {
+    display: inline-block;
+    margin-left: 0.45rem;
+    font-size: 0.66rem;
+}
+
+.role-status-badge {
+    flex: 0 0 auto;
+    padding: 0.12rem 0.42rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    white-space: nowrap;
+}
+
+.is-full .role-status-badge {
+    color: #68bd8c;
+    border-color: color-mix(in srgb, #4f9f77 60%, var(--border-color));
+}
+
+.is-progress .role-status-badge,
+.is-active .role-status-badge {
+    color: var(--purple-bright);
+    border-color: var(--border-accent);
+}
+
+.role-status-card > p {
+    min-height: 2.4em;
+    margin: 0.38rem 0 0.62rem;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    line-height: 1.55;
+}
+
+.role-status-progress-row,
+.role-status-metric > div:first-child {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.55rem;
+    font-size: 0.7rem;
+}
+
+.role-status-progress-row strong,
+.role-status-metric strong {
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.role-status-track {
+    height: 5px;
+    margin-top: 0.38rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--border-color) 72%, transparent);
+}
+
+.role-status-track i {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--purple-bright), #70a37d);
+}
+
+.role-status-track.mini {
+    height: 3px;
+    margin-top: 0.2rem;
+}
+
+.role-status-unknown {
+    font-size: 0.7rem;
+}
+
+.role-status-current {
+    color: var(--purple-bright);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.role-status-gains {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.55rem;
+    padding-top: 0.45rem;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.7rem;
+}
+
+.role-status-gains span {
+    color: var(--text-muted);
+}
+
+.role-status-gains strong {
+    color: var(--purple-bright);
+    font-variant-numeric: tabular-nums;
+}
+
+.role-status-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.48rem 0.7rem;
+}
+
+.role-status-rules {
+    margin-top: 0.65rem;
+    border-top: 1px dashed var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+}
+
+.role-status-rules summary {
+    padding-top: 0.55rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.role-status-rule-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin-top: 0.55rem;
+}
+
+.role-status-rule-grid > div {
+    display: grid;
+    gap: 0.12rem;
+    padding: 0.45rem;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+}
+
+.role-status-rule-grid strong {
+    color: var(--text-primary);
+}
+
+.role-status-rule-grid span,
+.role-status-rule-grid small {
+    color: var(--text-muted);
+}
+
+@media (max-width: 800px) {
+    .role-status-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .role-status-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .role-status-group-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .role-status-group-head span {
+        text-align: left;
+    }
+
+    .role-status-metrics,
+    .role-status-rule-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .role-status-card > p {
+        min-height: 0;
+    }
+}

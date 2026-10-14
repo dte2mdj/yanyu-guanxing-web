@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烟雨江湖 · 本地存档工具</title>
+    <meta name="description" content="烟雨江湖本地存档导入、导出工具与模拟器入口">
+    <link rel="stylesheet" href="./home.css?v=2.1.44">
+    <link href="fonts/google-fonts.css" rel="stylesheet">
+    <script src="shared/page_bridge.js"></script>
+<style>.home-grid { grid-template-columns: minmax(0, 1fr); }</style></head>
+<body>
+    <main class="home-shell">
+        <header class="home-header">
+            <div class="home-title-row">
+                <h1>观星模拟器</h1>
+                <span id="appVersion" class="home-version"></span>
+            </div>
+            <p>夜观天象，手握星辰，推演江湖万象。</p>
+        </header>
+
+        <section class="home-grid" aria-label="存档与工具">
+            <section class="home-panel archive-import-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>数据导入</h2>
+                    </div>
+                    <strong id="homeSaveStatus" class="status-badge">未导入</strong>
+                </div>
+                <div class="home-main-role"><span>主角</span><strong id="homeMainRole">—</strong></div>
+                <label class="save-version-label" for="saveFormatVersion">解析版本
+                    <select id="saveFormatVersion" class="save-version-select">
+                        <option value="2.1" selected>2.1（当前）</option>
+                        <option value="2.0">2.0（仅解析）</option>
+                        <option value="1.9">1.9（仅解析）</option>
+                        <option value="1.8.3">1.8.3（仅解析）</option>
+                        <option value="1.8">1.8（仅解析）</option>
+                    </select>
+                </label>
+                <div class="home-actions">
+                    <label class="btn btn-primary">
+                        <span class="import-txt">导入数据</span>
+                        <input type="file" id="saveFileInput" hidden>
+                    </label>
+                    <button id="btnResetWebsite" class="btn btn-secondary" type="button">重置网页状态</button>
+                </div>
+                <p id="homeImportMessage" class="home-message" role="status">已有存档可离线导入与模拟。免 Root 导出是需联网的实验功能，默认关闭；开启前请阅读风险提示。</p>
+            </section>
+
+            
+
+        </section>
+
+        <section class="home-panel module-panel" aria-labelledby="moduleTitle">
+            <div class="panel-heading">
+                <div>
+                    <h2 id="moduleTitle">选择板块</h2>
+                </div>
+            </div>
+            <div class="module-grid">
+                <a href="./wash/index.html" class="module-card"><strong>洗髓模拟</strong><span>洗脉、锁脉、保底与置换推演</span></a>
+                <a href="./equip/index.html" class="module-card"><strong>装备模拟</strong><span>打造、升炼、精炼与淬炼</span></a>
+                <a href="./role/index.html" class="module-card"><strong>角色面板</strong><span>查看角色、天赋、装备和属性</span></a>
+                <a href="./role-status/index.html" class="module-card"><strong>角色状态</strong><span>查看永久培养进度、剩余量和属性上限</span></a>
+                <a href="./auto/index.html" class="module-card"><strong>自动模拟</strong><span>自动洗脉路线与装备批量预测</span></a>
+            </div>
+        </section>
+
+        <section class="home-panel changelog-panel" aria-labelledby="changelogTitle">
+
+            <div class="changelog-header">
+                <span class="changelog-kicker">版本动态</span>
+                <h2 id="changelogTitle">更新日志</h2>
+            </div>
+            <section class="changelog-entry is-current">
+                <div class="changelog-meta"><h3>v2.1.44</h3><time datetime="2026-09-28">2026-09-28</time></div>
+                <ul>
+                    <li>自动装备模拟同时保留蓝装和紫装，不按词条数量过滤，蓝装也继续分析精炼。</li>
+                    <li>更新品质统计和说明，装备详情增加品质及词条数量；保留真实打造序号。</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta"><h3>v2.1.43</h3><time datetime="2026-09-28">2026-09-28</time></div>
+                <ul>
+                    <li>支持 73420 新存档解密，按存档版本、渠道切换装备和洗脉规则，保留旧档兼容。</li>
+                    <li>更新普通打造、保底及剑王阁剑胚的种子推进；补齐普通洗脉 RC、角色切换与后台规划状态。</li>
+                    <li>已做真实存档离线回归；新版预测仍需游戏实际结果核验，建议先小批量对照。</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta"><h3>v2.1.42</h3><time datetime="2026-09-18">2026-09-18</time></div>
+                <ul>
+                    <li>移除战斗序列推演、相关后台任务及专用资源。</li>
+                    <li>保留装备、洗脉、角色面板、角色状态、自动模拟与存档导入。</li>
+                </ul>
+            </section>
+<section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.39</h3>
+                    <time datetime="2026-08-27">2026-08-27</time>
+                </div>
+                <ul>
+                    <li>新增 `tsidfug8 / 00073288` GetDeviceDB 存档解析，并使用真实小米渠道导出文件完成端到端回归。</li>
+                    <li>新增 `nfidfug8 / 00073288` 新版存档解析，保留 72288 与 72294 兼容。</li>
+                    <li>使用真实小米渠道 v2.1.4 导出文件增加 73288 端到端解密回归。</li>
+                    <li>记录登录后读取 `m_tKeys[版本号]`、组合渠道后缀并验证新版密钥的维护流程。</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.9</h3>
+                    <time datetime="2026-08-24">2026-08-24</time>
+                </div>
+                <ul>
+                    <li>新增 00072294 / nfidfug8 存档解析，保留 72288 兼容。</li>
+                    <li>提供纯本地 v2.1.4 导出工具，按完整 yanyucache 生成新版解析码，并兼容 MuMu 5.31.x 的 su Root 参数。</li>
+                    <li>新增真实 72288、72294 存档端到端回归测试。</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.7</h3>
+                    <time datetime="2026-08-16">2026-08-19</time>
+                </div>
+                <ul>
+                    <li>修正剑王阁序列不准确的问题。(测试版本)</li>
+                    <li>适配国际服洗脉规则。</li>
+                    <li>新增剑王阁以当前剑胚进旭后续剑胚推算的功能。(测试版本)</li>
+                    <li>新增劍王閣自動模擬功能。(测试版本)</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.6</h3>
+                    <time datetime="2026-08-16">2026-08-1</time>
+                </div>
+                <ul>
+                    <li>用着不是很顺手，再改改功能，勿念。</li>
+                    <li>调整页面布局，保持界面整洁。</li>
+                    <li>新增剑王阁序列查询。(测试版本)</li>
+                    <li>调整自动洗脉的算法逻辑。(测试版本)</li>
+                    <li>优化自动锻造的界面展示。</li>
+                    <li>解决芒晶序列不准的问题。</li>
+                    <li>调整手动洗脉序列不是很准确的问题。（未测试）</li>
+                    <li>接入另一位余佬的无限制换页面。(界面还未优化)</li>
+                    <li>感谢久，金两位道友的帮助测试。</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.4</h3>
+                    <time datetime="2026-08-15">2026-08-15</time>
+                </div>
+                <ul>
+                    <li>更新自动模拟</li>
+                    <li>修复页签丢失</li>
+                    <li>导出工具优化 Mac 平台</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.3</h3>
+                    <time datetime="2026-08-14">2026-08-14</time>
+                </div>
+                <ul>
+                    <li>修复自动模拟精炼误差</li>
+                    <li>调整附加状态</li>
+                    <li>兼容 v1.8 和 v1.8.3 存档的导入</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.2</h3>
+                    <time datetime="2026-08-14">2026-08-14</time>
+                </div>
+                <ul>
+                    <li>新增自动模拟板块（测试版），模拟数据可能有误差</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.1</h3>
+                    <time datetime="2026-08-14">2026-08-14</time>
+                </div>
+                <ul>
+                    <li>修正装备推进结果显示与重置清空模拟背包</li>
+                    <li>校正含特殊材料打造装备的精炼种子</li>
+                    <li>优化紫脉推演弹窗的内外层滚动</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.1.0</h3>
+                    <time datetime="2026-08-14">2026-08-14</time>
+                </div>
+                <ul>
+                    <li>发布十五渠道存档导入与导出，新增魅族支持</li>
+                    <li>优化 APK 渠道选择、操作步骤与免责声明界面</li>
+                    <li>校正装备打造和洗脉网页逻辑</li>
+                </ul>
+            </section>
+            <section class="changelog-entry">
+                <div class="changelog-meta">
+                    <h3>v2.0</h3>
+                    <time datetime="2026-08-13">2026-08-13</time>
+                </div>
+                <ul>
+                    <li>新增渠道感知的文件名与解析路由</li>
+                    <li>扩展渠道支持并保留 1.9 兼容入口</li>
+                </ul>
+            </section>
+
+        </section>
+
+        <footer class="app-footer">
+            <p>数据来源于 <a href="https://wiki.biligame.com/yanyu/" target="_blank" rel="noopener">烟雨江湖 Wiki</a></p>
+        </footer>
+    </main>
+    <script src="./shared/version.js"></script>
+    <script src="./shared/pako.min.js"></script>
+    <script src="./shared/sql-wasm.js"></script>
+    <script src="./shared/sql-wasm-embed.js"></script>
+    <script src="./shared/save_decrypt.js?v=2.1.44-fork"></script>
+    <script src="./shared/archive_state.js"></script>
+    <script src="./home.js?v=2.1.44"></script>
+<script src="mobile-capture.js"></script><script src="mobile-bridge.js"></script></body>
+</html>

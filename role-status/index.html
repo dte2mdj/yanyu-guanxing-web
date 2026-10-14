@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烟雨江湖 · 角色状态</title>
+    <meta name="description" content="烟雨江湖角色永久培养进度、属性收益与上限总览">
+    <link rel="stylesheet" href="../shared/simulator.css">
+    <link rel="stylesheet" href="./status.css">
+    <link href="../fonts/google-fonts.css" rel="stylesheet">
+    <script src="../shared/page_bridge.js"></script>
+</head>
+<body>
+    <div class="app-container role-status-app">
+        <header class="app-header">
+            <h1>角色状态</h1>
+            <p class="subtitle">永久培养来源、当前进度、剩余量与属性上限 <span id="appVersion" class="app-version"></span></p>
+            <nav class="sim-nav">
+                <a href="../index.html">首页</a>
+                <span class="nav-sep">·</span>
+                <a href="../wash/index.html">洗髓模拟</a>
+                <span class="nav-sep">·</span>
+                <a href="../equip/index.html">装备模拟</a>
+                <span class="nav-sep">·</span>
+                <a href="../role/index.html">角色面板</a>
+                <span class="nav-sep">·</span>
+                <a href="../role-status/index.html" class="active" aria-current="page">角色状态</a>
+                <span class="nav-sep">·</span>
+                <span class="nav-sep">·</span>
+                <a href="../auto/index.html">自动模拟</a>
+            </nav>
+        </header>
+
+        <section class="archive-summary" aria-label="存档信息">
+            <div class="archive-summary-info">
+                <div class="archive-summary-item">
+                    <span>存档状态</span>
+                    <strong id="saveStatus">未导入</strong>
+                </div>
+                <div class="archive-summary-item">
+                    <span>主角</span>
+                    <strong id="archiveMainRole">—</strong>
+                </div>
+            </div>
+            <div class="archive-summary-actions">
+                <a id="archiveImportButton" class="btn btn-archive-action" href="../index.html">导入数据</a>
+                <button id="btnExportTable" class="btn btn-archive-action" type="button" data-export-custom="true">导出表格</button>
+                <button id="btnResetWebsite" class="btn btn-archive-action" type="button" aria-live="polite">重置网页</button>
+            </div>
+        </section>
+
+        <section class="config-panel">
+            <div class="config-row" id="roleSelectRow" hidden>
+                <div class="config-group grow">
+                    <label for="roleSelect">角色</label>
+                    <div class="select-with-btn">
+                        <select id="roleSelect">
+                            <option value="">请先导入存档</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="config-group grow">
+                    <label for="roleFilter">筛选</label>
+                    <input type="search" id="roleFilter" placeholder="名称 / ID / 标签" autocomplete="off">
+                </div>
+            </div>
+        </section>
+
+        <div id="roleStatusEmpty" class="role-status-empty">导入存档后选择角色，查看永久培养来源、当前进度与属性上限</div>
+
+        <main id="roleStatusPanel" class="role-status-panel" hidden>
+            <section class="history-panel role-status-overview">
+                <div class="panel-header role-status-header">
+                    <div>
+                        <span class="role-status-kicker">CHARACTER PROGRESS</span>
+                        <h2 id="roleStatusName">—</h2>
+                    </div>
+                    <span id="roleStatusTag" class="meta-text"></span>
+                </div>
+                <div id="roleStatusSummary" class="role-status-summary" aria-label="角色状态概览"></div>
+            </section>
+            <div id="roleStatus" class="role-status-groups"></div>
+        </main>
+
+        <footer class="app-footer">
+            <p>数据来源于 <a href="https://wiki.biligame.com/yanyu/" target="_blank" rel="noopener">烟雨江湖 Wiki</a></p>
+        </footer>
+    </div>
+
+    <script src="../shared/version.js"></script>
+    <script src="../shared/role_status_data.js"></script>
+    <script src="../shared/pako.min.js"></script>
+    <script src="../shared/save_decrypt.js?v=2.1.44-fork"></script>
+    <script src="../shared/archive_state.js"></script>
+    <script src="./status.js"></script>
+<script src="../mobile-capture.js"></script><script src="../mobile-bridge.js"></script></body>
+</html>
